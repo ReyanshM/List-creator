@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <center>
+        <h1>Create your list over here</h1>
+        <br>
+        <label>1</label>
+        <input placeholder="Item number 1" id="I1" type="text">
+        <label>2</label>
+        <input placeholder="Item number 2" id="I2" type="text">
+        <label>3</label>
+        <input placeholder="Item number 3" id="I3" type="text">
+        <label>4</label>
+        <input placeholder="Item number 4" id="I4" type="text">
+        <br>
+        <br>
+        <h2 id="list-comma"></h2>
+        <h2 id="list-nocomma"></h2>
+        <br>
+        <br>
+        <button class="btn btn-primary" id="Submit" onclick="submit()">Submit</button>
+        <br>
+        <br>
+        <button id="Sort" class="btn btn-info" style="display:none" onclick="sorting()">Sort</button> 
+    </center>
+    <script>
+        var list=[];
+        var student="";
+        function submit(){
+            list=[];
+            for(i=1; i<=4; i++){
+                student=document.getElementById("I"+i).value;
+                if (student!="") {
+                    list.push(student+"<br>");
+                }
+            }
+            document.getElementById("Submit").style.display="none";
+            document.getElementById("Sort").style.display="inline-block";
+            
+            document.getElementById("list-comma").innerHTML=list;
+            document.getElementById("list-nocomma").innerHTML=list.join(" ");
+        }
+        function sorting(){
+            list.sort();
+            document.getElementById("list-comma").innerHTML=list;
+            document.getElementById("list-nocomma").innerHTML=list.join(" ");
+            document.getElementById("Sort").style.display="none";
+            document.getElementById("Submit").style.display="inline-block";
+        }
+        </script>
+</body>
+</html>
